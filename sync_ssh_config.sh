@@ -31,7 +31,7 @@ git pull origin main
 
 echo -e "\033[33m - adding changes... \033[0m";
 git add .
-git commit -m "added"
+git commit -m "changed"
 git push origin main
 
 echo -e "\033[3;32m Successfully done! \033[0m";
