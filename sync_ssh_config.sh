@@ -35,3 +35,4 @@ git commit -m "changed"
 git push origin main
 
 echo -e "\033[3;32m Successfully done! \033[0m";
+echo ${TODAY} - ${TIME} - synced > ~/syncer/bash-scripts/logger.log
