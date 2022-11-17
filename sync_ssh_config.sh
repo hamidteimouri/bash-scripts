@@ -1,5 +1,5 @@
 #!/bin/bash
-clear
+
 ################################################################
 ##
 ##   SSH config syncer
@@ -19,20 +19,27 @@ echo -e "\033[3;32m ${TODAY} - ${TIME} \033[0m";
 if [[ ! -d $SSH_DIRECTORY ]]
 then
     echo -e "\033[31m $SSH_DIRECTORY does not exist on your filesystem. \033[0m"
-    exit
+    cd ~
+    mkdir .ssh
 fi
-echo -e "\033[33m - changing directory into $SSH_DIRECTORY \033[0m";
+echo -e "\033[33m changing directory into $SSH_DIRECTORY \033[0m";
 
 # shellcheck disable=SC2164
 cd $SSH_DIRECTORY
 
-echo -e "\033[33m - pulling changes from Git... \033[0m";
+echo -e "\033[33m - pulling changes from the Git ... \033[0m";
 git pull origin main
 
-echo -e "\033[33m - adding changes... \033[0m";
+echo -e "\033[33m - addeing changesto the Git ... \033[0m";
 git add .
 git commit -m "changed"
 git push origin main
 
 echo -e "\033[3;32m Successfully done! \033[0m";
-echo ${TODAY} - ${TIME} - synced > ~/syncer/bash-scripts/logger.log
+
+if [ ! -f ~/syncer/bash-scripts/logger.log ]
+then
+    touch ~/syncer/bash-scripts/logger.log
+fi
+
+echo ${TODAY} - ${TIME} - synced >> ~/syncer/bash-scripts/logger.log
