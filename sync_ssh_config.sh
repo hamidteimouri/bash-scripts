@@ -30,7 +30,7 @@ cd $SSH_DIRECTORY
 echo -e "\033[33m - pulling changes from the Git ... \033[0m";
 git pull origin main
 
-echo -e "\033[33m - addeing changesto the Git ... \033[0m";
+echo -e "\033[33m - adding changes to the Git ... \033[0m";
 git add .
 git commit -m "changed"
 git push origin main
